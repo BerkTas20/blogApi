@@ -6,6 +6,7 @@ import com.berktas.blogApi.controller.requests.UpdatePostRequest;
 import com.berktas.blogApi.model.dto.PostDto;
 import com.berktas.blogApi.model.entity.Post;
 import com.berktas.blogApi.service.PostService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/post")
 @RequiredArgsConstructor
+@Tag(name = "post")
 public class PostController {
     private final PostService postService;
 

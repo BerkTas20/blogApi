@@ -1,4 +1,4 @@
-package com.berktas.blogApi.service;
+package com.berktas.blogApi.service.impl;
 
 import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SavePostRequest;
@@ -14,6 +14,7 @@ import com.berktas.blogApi.repository.CategoryRepository;
 import com.berktas.blogApi.repository.PostRepository;
 import com.berktas.blogApi.repository.TagRepository;
 import com.berktas.blogApi.repository.UserRepository;
+import com.berktas.blogApi.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,7 +40,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
-        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("User not found" + categoryId)).getCategory();
+        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("User not found" + categoryId));
         Post post = new Post();
         post.setTitle(savePostRequest.getTitle());
         post.setDescription(savePostRequest.getDescription());
@@ -52,7 +53,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDto update(Long id, UpdatePostRequest updatePostRequest) {
         Post post = postRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found" + id));
-        Category category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found" + id)).getCategory();
+        Category category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found" + id));
         post.setTitle(updatePostRequest.getTitle());
         post.setDescription(updatePostRequest.getDescription());
         post.setCategory(category);
@@ -95,7 +96,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostDto> getPostsByCategory(Long categoryId) {
-        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("User not found" + categoryId)).getCategory();
+        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("User not found" + categoryId));
         List<Post> posts = this.postRepository.findByCategory(category);
         return postMapper.entityListToDtoList(posts);
     }
