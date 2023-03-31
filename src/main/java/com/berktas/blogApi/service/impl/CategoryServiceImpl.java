@@ -7,7 +7,6 @@ import com.berktas.blogApi.model.entity.Category;
 import com.berktas.blogApi.model.mapper.CategoryMapper;
 import com.berktas.blogApi.repository.CategoryRepository;
 import com.berktas.blogApi.service.CategoryService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

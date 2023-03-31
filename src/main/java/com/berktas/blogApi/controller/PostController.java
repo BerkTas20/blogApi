@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/post")
 @RequiredArgsConstructor
-@Tag(name = "post")
+@Tag(name = "Post")
 public class PostController {
     private final PostService postService;
 
@@ -64,7 +64,7 @@ public class PostController {
         return postService.getPostsByUser(userId);
     }
 
-    @GetMapping("/posts/search/{keywords}")
+    @GetMapping("/search/{keywords}")
     public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords") String keywords) {
         return new ResponseEntity<List<PostDto>>(postService.searchPosts(keywords), HttpStatus.OK);
     }

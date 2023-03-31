@@ -4,4 +4,5 @@ import com.berktas.blogApi.core.repository.BaseRepository;
 import com.berktas.blogApi.model.entity.Like;
 
 public interface LikeRepository extends BaseRepository<Like> {
+    boolean existsByUserIdAndPostId(Long userId, Long postId);
 }
