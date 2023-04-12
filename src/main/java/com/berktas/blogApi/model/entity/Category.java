@@ -13,8 +13,10 @@ import java.util.List;
 @Setter
 @Entity
 public class Category extends AbstractTimestampEntity {
+
     private String title;
     private String description;
+
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
 }

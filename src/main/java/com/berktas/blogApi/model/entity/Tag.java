@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 public class Tag extends AbstractTimestampEntity {
+
     private String name;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"))

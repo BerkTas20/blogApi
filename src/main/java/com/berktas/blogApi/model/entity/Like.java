@@ -14,6 +14,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "likes")
 public class Like extends AbstractTimestampEntity {
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;

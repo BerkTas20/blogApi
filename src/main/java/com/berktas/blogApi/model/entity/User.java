@@ -16,6 +16,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE )
 @Table
 public class User extends AbstractTimestampEntity {
+
     private String firstName;
     private String lastName;
     private String username;
@@ -27,8 +28,10 @@ public class User extends AbstractTimestampEntity {
     @Column(name = "user_type", updatable = false, insertable = false)
     @Enumerated(EnumType.STRING)
     private com.berktas.blogApi.model.enums.UserType userType;
+
     @Lob
     private byte[] profilePhoto;
+
     protected void setUserType(UserType value) {
         userType = value;
     }
@@ -40,11 +43,4 @@ public class User extends AbstractTimestampEntity {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-//    @ManyToMany(cascade = CascadeType.REMOVE)
-//    @JoinTable(
-//            name = "users_authorities",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "authority_id")
-//    )
-//    private List<Author> authorities;
 }

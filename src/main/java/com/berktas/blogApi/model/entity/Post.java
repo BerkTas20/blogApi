@@ -31,6 +31,6 @@ public class Post extends AbstractTimestampEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
-    @OneToOne //burayı tekrar kontrol et
+    @OneToMany
     private Like like;
 }

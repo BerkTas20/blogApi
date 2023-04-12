@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Comment extends AbstractTimestampEntity {
+
     private String description;
 
     @ManyToOne
