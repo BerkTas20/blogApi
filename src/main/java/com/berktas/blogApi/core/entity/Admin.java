@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 public class Admin extends User {
 
     public Admin(){
-        setRole(Role.ROLE_ADMIN.toString());
+        setRole((Role.ROLE_ADMIN.toString()));
         setUserType(UserType.Admin);
     }
 

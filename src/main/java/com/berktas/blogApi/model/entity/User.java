@@ -48,7 +48,6 @@ public class User extends AbstractTimestampEntity {
         user.setUsername(saveUserRequest.getUsername());
         user.setRole(saveUserRequest.getRole());
         user.setFirstName(saveUserRequest.getFirstName());
-        user.setLastName(saveUserRequest.getLastName());
         user.setPassword(saveUserRequest.getPassword());
         user.setEmail(saveUserRequest.getEmail());
         return user;

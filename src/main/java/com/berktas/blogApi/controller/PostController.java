@@ -39,11 +39,12 @@ public class PostController {
         postService.delete(id);
     }
 
+    @GetMapping
     public ResponseEntity<PostResponse> getAllPosts(
             @RequestParam Integer pageNumber,
             @RequestParam Integer pageSize,
-            @RequestParam String sortBy,
-            @RequestParam String sortDir
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir
     ) {
         PostResponse postResponse = postService.getAllPosts(pageNumber, pageSize, sortBy, sortDir);
         return ResponseEntity.ok(postResponse);
@@ -54,30 +55,19 @@ public class PostController {
         return ResponseEntity.ok(postService.getOnePostById(id));
     }
 
-    @GetMapping("/{categoryId}")
+    @GetMapping("/category/{categoryId}")
     public ResponseEntity<List<PostDto>> getPostsByCategory(@PathVariable Long categoryId) {
         return ResponseEntity.ok(postService.getPostsByCategory(categoryId));
     }
 
-    @GetMapping("/{userId}")
-    public List<PostDto> getPostsByUser(@PathVariable Long userId) {
-        return postService.getPostsByUser(userId);
-    }
+//    @GetMapping("/{userId}")
+//    public List<PostDto> getPostsByUser(@PathVariable Long userId) {
+//        return postService.getPostsByUser(userId);
+//    }
 
     @GetMapping("/search/{keywords}")
     public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords") String keywords) {
         return new ResponseEntity<List<PostDto>>(postService.searchPosts(keywords), HttpStatus.OK);
-    }
-
-
-    @GetMapping("/tag/{id}")
-    public ResponseEntity<PostResponse> getPostsByTag(
-            @RequestParam(value = "page", required = false) Integer page,
-            @RequestParam(value = "size", required = false) Integer size,
-            @PathVariable(name = "id") Long id) {
-        PostResponse response = postService.getPostsByTag(id, page, size);
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
