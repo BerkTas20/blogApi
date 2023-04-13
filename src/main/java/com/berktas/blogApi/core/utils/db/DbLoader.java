@@ -1,7 +1,8 @@
 package com.berktas.blogApi.core.utils.db;
 
 
-import com.berktas.blogApi.core.entity.Admin;
+import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
+import com.berktas.blogApi.model.entity.User;
 import com.berktas.blogApi.model.enums.Role;
 import com.berktas.blogApi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,14 @@ public class DbLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        Long adminCount = userRepository.countByRole(Role.ROLE_ADMIN.toString());
+        Long adminCount = userRepository.countByRole(String.valueOf(Role.ROLE_ADMIN));
         if (adminCount == 0) {
-            Admin admin = Admin.create("Admin", "-", "admin", encoder.encode("12345"));
+            User admin = User.create(SaveAndUpdateUserRequest.builder()
+                    .firstName("Admin")
+                    .username("admin")
+                    .role(String.valueOf(Role.ROLE_ADMIN))
+                    .password("12345")
+                    .build());
             userRepository.save(admin);
         }
     }
