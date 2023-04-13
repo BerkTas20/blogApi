@@ -90,7 +90,6 @@ public class PostServiceImpl implements PostService {
     public PostDto getOnePostById(Long postId) {
         Post post = this.postRepository.findById(postId)
                 .orElseThrow(() -> new EntityNotFoundException("Post not found" + postId));
-        ;
         return postMapper.entityToDto(post);
     }
 
