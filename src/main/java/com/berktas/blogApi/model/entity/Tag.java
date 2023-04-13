@@ -12,7 +12,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Builder
 public class Tag extends AbstractTimestampEntity {
 
     private String name;
