@@ -18,5 +18,4 @@ public interface PostService {
     List<PostDto> getPostsByUser(Long userId);
     //search posts
     List<PostDto> searchPosts(String keyword);
-    PostResponse getPostsByTag(Long tagId, int page, int size);
 }

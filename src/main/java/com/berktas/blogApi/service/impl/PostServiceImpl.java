@@ -113,23 +113,4 @@ public class PostServiceImpl implements PostService {
         return postMapper.entityListToDtoList(posts);
     }
 
-    @Override
-    public PostResponse getPostsByTag(Long tagId, int page, int size) {
-        Tag tag = tagRepository.findById(tagId).orElseThrow(() -> new EntityNotFoundException("Tag not found" + tagId));
-        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDateTime").descending());
-        Page<Post> posts = postRepository.findByTagsIn(Collections.singletonList(tag), pageable);
-        List<Post> content = posts.getNumberOfElements() == 0 ? Collections.emptyList() : posts.getContent();
-
-        List<PostDto> postDtos = content.stream().map(postMapper::entityToDto).collect(Collectors.toList());
-        PostResponse postResponse = new PostResponse();
-        postResponse.setContent(postDtos);
-        postResponse.setPageNumber(posts.getNumber());
-        postResponse.setPageSize(posts.getSize());
-        postResponse.setTotalElements(posts.getTotalElements());
-        postResponse.setTotalPages(posts.getTotalPages());
-        postResponse.setLastPage(posts.isLast());
-
-        return postResponse;
-
-    }
 }

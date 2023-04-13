@@ -15,7 +15,8 @@ import java.util.List;
 public interface PostRepository extends BaseRepository<Post> {
     List<Post> findByUser(User user);
     List<Post> findByCategory(Category category);
-    Page<Post> findByTagsIn(List<Tag> tags, Pageable pageable);
+
+//    Page<Post> findByTagsIn(List<Tag> tags, Pageable pageable);
     @Query("select p from Post p where p.title like :key")
     List<Post> searchByTitle(@Param("key") String key);
 }
