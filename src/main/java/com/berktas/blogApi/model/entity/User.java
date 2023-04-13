@@ -1,9 +1,9 @@
 package com.berktas.blogApi.model.entity;
 
+import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
 import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
 import com.berktas.blogApi.model.enums.UserType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,5 +42,16 @@ public class User extends AbstractTimestampEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
+
+    public static User create(SaveAndUpdateUserRequest saveUserRequest) {
+        User user = new User();
+        user.setUsername(saveUserRequest.getUsername());
+        user.setRole(saveUserRequest.getRole());
+        user.setFirstName(saveUserRequest.getFirstName());
+        user.setLastName(saveUserRequest.getLastName());
+        user.setPassword(saveUserRequest.getPassword());
+        user.setEmail(saveUserRequest.getEmail());
+        return user;
+    }
 
 }

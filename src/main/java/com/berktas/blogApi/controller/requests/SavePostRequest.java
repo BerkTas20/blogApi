@@ -12,22 +12,5 @@ import lombok.Setter;
 public class SavePostRequest {
     private String description;
     private String title;
-    private Long userId;
-    private Long categoryId;
 
-//    private List<String> tags;
-
-//    public List<String> getTags() {
-//
-//        return tags == null ? Collections.emptyList() : new ArrayList<>(tags);
-//    }
-//
-//    public void setTags(List<String> tags) {
-//
-//        if (tags == null) {
-//            this.tags = null;
-//        } else {
-//            this.tags = Collections.unmodifiableList(tags);
-//        }
-//    }
 }

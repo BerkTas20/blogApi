@@ -11,5 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SaveAndUpdateCategoryRequest {
-  CategoryDto categoryDto;
+  String title;
+  String description;
 }

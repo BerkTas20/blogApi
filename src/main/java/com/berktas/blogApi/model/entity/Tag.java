@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@EqualsAndHashCode(callSuper = true)
 public class Tag extends AbstractTimestampEntity {
 
     private String name;
