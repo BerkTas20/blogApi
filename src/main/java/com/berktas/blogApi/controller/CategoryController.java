@@ -20,7 +20,7 @@ public class CategoryController {
         return categoryService.save(saveAndUpdateCategoryRequest);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public CategoryDto update(@PathVariable Long id, SaveAndUpdateCategoryRequest saveAndUpdateCategoryRequest){
         return categoryService.update(id, saveAndUpdateCategoryRequest);
     }

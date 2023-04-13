@@ -23,16 +23,16 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto save(SaveAndUpdateCategoryRequest saveAndUpdateCategoryRequest) {
         Category category = new Category();
-        category.setTitle(saveAndUpdateCategoryRequest.getCategoryDto().title());
-        category.setDescription(saveAndUpdateCategoryRequest.getCategoryDto().description());
+        category.setTitle(saveAndUpdateCategoryRequest.getTitle());
+        category.setDescription(saveAndUpdateCategoryRequest.getDescription());
         return categoryMapper.entityToDto(categoryRepository.save(category));
     }
 
     @Override
     public CategoryDto update(Long id, SaveAndUpdateCategoryRequest saveAndUpdateCategoryRequest) {
         Category category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Category not found" + id));
-        category.setTitle(saveAndUpdateCategoryRequest.getCategoryDto().title());
-        category.setDescription(saveAndUpdateCategoryRequest.getCategoryDto().description());
+        category.setTitle(saveAndUpdateCategoryRequest.getTitle());
+        category.setDescription(saveAndUpdateCategoryRequest.getDescription());
         return categoryMapper.entityToDto(categoryRepository.save(category));
     }
 

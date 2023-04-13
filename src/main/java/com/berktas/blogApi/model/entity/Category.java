@@ -19,4 +19,10 @@ public class Category extends AbstractTimestampEntity {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
+
+    public static Category create(String title) {
+        Category category = new Category();
+        category.title = title;
+        return category;
+    }
 }
