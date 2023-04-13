@@ -60,10 +60,6 @@ public class PostController {
         return ResponseEntity.ok(postService.getPostsByCategory(categoryId));
     }
 
-//    @GetMapping("/{userId}")
-//    public List<PostDto> getPostsByUser(@PathVariable Long userId) {
-//        return postService.getPostsByUser(userId);
-//    }
 
     @GetMapping("/search/{keywords}")
     public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords") String keywords) {
