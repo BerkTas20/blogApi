@@ -1,4 +1,4 @@
-package com.berktas.blogApi.service.impl;
+package com.berktas.blogApi.service;
 
 
 import com.berktas.blogApi.controller.requests.LoginRequest;
@@ -10,9 +10,7 @@ import com.berktas.blogApi.core.security.JwtTokenUtil;
 import com.berktas.blogApi.core.security.SpringContext;
 import com.berktas.blogApi.model.entity.User;
 import com.berktas.blogApi.repository.UserRepository;
-import com.berktas.blogApi.service.AccountService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -23,7 +21,8 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;

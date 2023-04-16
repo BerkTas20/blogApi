@@ -1,12 +1,10 @@
 package com.berktas.blogApi.model.entity;
 
 import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
-import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import javax.persistence.Entity;
+
 
 @Getter
 @Setter

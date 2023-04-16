@@ -26,8 +26,8 @@ public class DbLoader implements CommandLineRunner {
             User admin = User.create(SaveAndUpdateUserRequest.builder()
                     .firstName("Admin")
                     .username("admin")
-                    .role(Role.ROLE_ADMIN)
                     .password("12345")
+                    .role(Role.ROLE_ADMIN)
                     .build());
             userRepository.save(admin);
         }

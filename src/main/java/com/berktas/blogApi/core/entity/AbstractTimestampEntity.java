@@ -1,12 +1,13 @@
 package com.berktas.blogApi.core.entity;
 
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 
+import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 

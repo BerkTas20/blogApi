@@ -4,7 +4,7 @@ package com.berktas.blogApi.core.config;
 
 import com.berktas.blogApi.core.security.JwtAuthenticationEntryPoint;
 import com.berktas.blogApi.core.security.JwtAuthenticationFilter;
-import com.berktas.blogApi.service.impl.UserDetailsManager;
+import com.berktas.blogApi.core.security.UserDetailsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -14,13 +14,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.web.cors.CorsConfiguration;
@@ -30,72 +29,18 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsManager userDetailsManager;
     // NORMALDE SPRINGIN BIR CLASSI. BUNU OVERRIDE EDECEGIZ
     // TOKEN VEYA SECURITYLE ILGILI BIR SORUN GORDUGUNDE MESAJ URETECEK.
     // YANI UYGULAMAYA YETKISIZ GIRIS OLDUGUNDA MESAJ DONDURMEMIZI SAGLAYAN BIR HANDLER.
-
     private final JwtAuthenticationEntryPoint unauthorizedHandler;
 
-    public SecurityConfig(UserDetailsManager userDetailsManager, JwtAuthenticationEntryPoint unauthorizedHandler) {
+    public SecurityConfig(UserDetailsManager userDetailsManager,  JwtAuthenticationEntryPoint unauthorizedHandler) {
         this.userDetailsManager = userDetailsManager;
+
         this.unauthorizedHandler = unauthorizedHandler;
-    }
-
-//    @Bean
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity httpSecurity,
-                                                       BCryptPasswordEncoder bCryptPasswordEncoder,
-                                                       UserDetailsService userDetailsService) throws Exception {
-        return httpSecurity
-                .getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(bCryptPasswordEncoder)
-                .and()
-                .build();
-    }
-
-    @Bean
-    public JwtAuthenticationFilter authenticationTokenFilterBean() {
-        return new JwtAuthenticationFilter();
-    }
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll();
-//        http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler);
-//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        http.addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class);
-//        http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
-//        http.cors();
-//    }
-
-    @Bean
-    protected SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .csrf().disable()
-                .authorizeRequests().requestMatchers("/**").permitAll()
-                .and()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class)
-                .cors();
-        return httpSecurity.build();
-    }
-
-    @Bean
-    public SessionRegistry sessionRegistry() {
-        return new SessionRegistryImpl();
     }
 
     @Bean
@@ -103,15 +48,38 @@ public class SecurityConfig {
         return new ServletListenerRegistrationBean<>(new HttpSessionEventPublisher());
     }
 
-    @Autowired
-    public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsManager).passwordEncoder(encoder());
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Bean
-    public BCryptPasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
+    public JwtAuthenticationFilter authenticationTokenFilterBean() {
+        return new JwtAuthenticationFilter();
     }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll();
+        http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler);
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+        http.cors();
+    }
+
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
+    @Autowired
+    public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsManager).passwordEncoder(new BCryptPasswordEncoder());
+    }
+
+
 
     @Bean
     public CorsFilter corsFilter() {

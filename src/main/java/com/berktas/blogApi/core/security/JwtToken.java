@@ -7,8 +7,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 
 public class JwtToken {
-    public static final String SIGNING_KEY = "aselsis";
-    public static final String ISSUER = "http://voker.com";
+    public static final String SIGNING_KEY = "berk";
+    public static final String ISSUER = "http://berk.com";
 
     private final String token;
     private final Claims claims;

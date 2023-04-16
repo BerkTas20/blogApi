@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 @Data
 public class CustomUserDetails implements UserDetails {
@@ -28,7 +29,6 @@ public class CustomUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority(user.getRole().toString()));
     }
-
     @JsonIgnore
     @Override
     public String getPassword() {

@@ -3,8 +3,6 @@ package com.berktas.blogApi.core.security;
 
 import com.berktas.blogApi.controller.requests.MeResponse;
 import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.enums.Role;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @Component

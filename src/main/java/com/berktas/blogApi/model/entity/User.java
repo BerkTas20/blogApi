@@ -2,12 +2,15 @@ package com.berktas.blogApi.model.entity;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
 import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
+import com.berktas.blogApi.core.security.SpringContext;
 import com.berktas.blogApi.model.enums.Role;
 import com.berktas.blogApi.model.enums.UserType;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -24,7 +27,9 @@ public class User extends AbstractTimestampEntity {
     private String phone;
     private String email;
     private String password;
-//    @javax.persistence.Enumerated(javax.persistence.EnumType.STRING)
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    @Column(nullable = false)
     private Role role = Role.ROLE_USER;
 
     @Column(name = "user_type", updatable = false, insertable = false)
@@ -38,9 +43,6 @@ public class User extends AbstractTimestampEntity {
         userType = value;
     }
 
-//    public void updatePassword(String password) {
-//        password = new BCryptPasswordEncoder().encode(password);
-//    }
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
@@ -50,9 +52,24 @@ public class User extends AbstractTimestampEntity {
         user.setUsername(saveUserRequest.getUsername());
         user.setRole(saveUserRequest.getRole());
         user.setFirstName(saveUserRequest.getFirstName());
-        user.setPassword(saveUserRequest.getPassword());
+        user.setLastName(saveUserRequest.getLastName());
+        user.changePassword(saveUserRequest.getPassword());
         user.setEmail(saveUserRequest.getEmail());
         return user;
+    }
+
+    public static User update(SaveAndUpdateUserRequest updateUserRequest) {
+        User user = SpringContext.getCurrentUser();
+        user.setUsername(updateUserRequest.getUsername());
+        user.setRole(updateUserRequest.getRole());
+        user.setFirstName(updateUserRequest.getFirstName());
+        user.setLastName(updateUserRequest.getLastName());
+        user.setEmail(updateUserRequest.getEmail());
+        return user;
+    }
+
+    public void changePassword(String rawPassword) {
+        password = new BCryptPasswordEncoder().encode(rawPassword);
     }
 
 }

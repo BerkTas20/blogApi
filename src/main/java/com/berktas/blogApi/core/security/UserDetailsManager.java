@@ -1,9 +1,9 @@
-package com.berktas.blogApi.service.impl;
+package com.berktas.blogApi.core.security;
 
 
-import com.berktas.blogApi.core.security.CustomUserDetails;
 import com.berktas.blogApi.model.entity.User;
 import com.berktas.blogApi.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,13 @@ import java.util.Optional;
 
 @Service
 @Transactional
-
+@RequiredArgsConstructor
 public class UserDetailsManager implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public UserDetailsManager(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     @Override
-    public CustomUserDetails loadUserByUsername(String username) {
+    public CustomUserDetails loadUserByUsername(String username)  {
         List<User> all = userRepository.findAll();
         Optional<User> optionalUser = userRepository.findByUsername(username);
         User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException(""));

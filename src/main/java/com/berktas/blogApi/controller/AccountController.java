@@ -8,22 +8,26 @@ import com.berktas.blogApi.core.utils.annotation.IsAuthenticated;
 import com.berktas.blogApi.core.utils.annotation.PermitAllCustom;
 import com.berktas.blogApi.service.AccountService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
 @RestController
-@RequestMapping("/account")
+@RequestMapping("account")
 @IsAuthenticated
 @RequiredArgsConstructor
+@Tag(name = "Account")
 public class AccountController {
     private final AccountService accountService;
 
     @GetMapping
-    public MeResponse meResponse() {
+    public MeResponse me() {
         return SpringContext.getMe();
     }
+
 
     @PostMapping("/login")
     @PermitAllCustom
@@ -31,4 +35,5 @@ public class AccountController {
 
         return accountService.login(loginRequest);
     }
+
 }
