@@ -2,6 +2,7 @@ package com.berktas.blogApi.model.entity;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
 import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
+import com.berktas.blogApi.model.enums.Role;
 import com.berktas.blogApi.model.enums.UserType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,7 +24,8 @@ public class User extends AbstractTimestampEntity {
     private String phone;
     private String email;
     private String password;
-    private String role;
+//    @javax.persistence.Enumerated(javax.persistence.EnumType.STRING)
+    private Role role = Role.ROLE_USER;
 
     @Column(name = "user_type", updatable = false, insertable = false)
     @Enumerated(EnumType.STRING)

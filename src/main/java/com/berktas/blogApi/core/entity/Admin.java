@@ -13,13 +13,13 @@ import javax.persistence.Entity;
 public class Admin extends User {
 
     public Admin(){
-        setRole((Role.ROLE_ADMIN.toString()));
+        setRole(Role.ROLE_ADMIN);
         setUserType(UserType.Admin);
     }
 
     public static Admin create(String firstName, String lastName, String userName, String encodedPassword){
         Admin admin = new Admin();
-        admin.setRole(Role.ROLE_ADMIN.toString());
+        admin.setRole(Role.ROLE_ADMIN);
         admin.setUserType(UserType.Admin);
         admin.setFirstName(firstName);
         admin.setLastName(lastName);

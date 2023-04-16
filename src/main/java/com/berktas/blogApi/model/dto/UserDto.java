@@ -1,5 +1,7 @@
 package com.berktas.blogApi.model.dto;
 
+import com.berktas.blogApi.model.enums.Role;
+
 public record UserDto(Long id,
                       String firstName,
                       String lastName,
@@ -7,7 +9,7 @@ public record UserDto(Long id,
                       String phone,
                       String email,
                       String password,
-                      String role) {
+                      Role role) {
 
 
 }

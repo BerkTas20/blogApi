@@ -14,7 +14,7 @@ public class SaveAndUpdateUserRequest {
         private String phone;
         private String email;
         private String password;
-        private String role;
+        private Role role;
 
 
 }

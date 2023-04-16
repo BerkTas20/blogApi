@@ -21,12 +21,12 @@ public class DbLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        Long adminCount = userRepository.countByRole(String.valueOf(Role.ROLE_ADMIN));
+        Long adminCount = userRepository.countByRole(Role.ROLE_ADMIN);
         if (adminCount == 0) {
             User admin = User.create(SaveAndUpdateUserRequest.builder()
                     .firstName("Admin")
                     .username("admin")
-                    .role(String.valueOf(Role.ROLE_ADMIN))
+                    .role(Role.ROLE_ADMIN)
                     .password("12345")
                     .build());
             userRepository.save(admin);
