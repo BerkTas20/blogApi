@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("account")
+@RequestMapping("/account")
 @IsAuthenticated
 @RequiredArgsConstructor
 @Tag(name = "Account")

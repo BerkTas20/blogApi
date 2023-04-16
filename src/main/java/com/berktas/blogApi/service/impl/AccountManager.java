@@ -1,4 +1,4 @@
-package com.berktas.blogApi.service;
+package com.berktas.blogApi.service.impl;
 
 
 import com.berktas.blogApi.controller.requests.LoginRequest;
@@ -11,6 +11,7 @@ import com.berktas.blogApi.core.security.SpringContext;
 import com.berktas.blogApi.model.entity.User;
 import com.berktas.blogApi.repository.UserRepository;
 
+import com.berktas.blogApi.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
