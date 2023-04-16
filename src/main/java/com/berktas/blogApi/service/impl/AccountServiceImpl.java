@@ -31,7 +31,7 @@ import static org.springframework.security.web.context.HttpSessionSecurityContex
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class AccountManager implements AccountService {
+public class AccountServiceImpl implements AccountService {
 
     private final JwtTokenUtil jwtTokenUtil;
     private final UserRepository userRepository;
