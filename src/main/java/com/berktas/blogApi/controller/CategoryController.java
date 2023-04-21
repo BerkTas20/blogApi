@@ -5,6 +5,7 @@ import com.berktas.blogApi.model.dto.CategoryDto;
 import com.berktas.blogApi.service.CategoryService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +17,13 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
     @PostMapping
-    public CategoryDto save(SaveAndUpdateCategoryRequest saveAndUpdateCategoryRequest){
-        return categoryService.save(saveAndUpdateCategoryRequest);
+    public ResponseEntity<CategoryDto> save(SaveAndUpdateCategoryRequest saveAndUpdateCategoryRequest){
+        return ResponseEntity.ok(categoryService.save(saveAndUpdateCategoryRequest));
     }
 
     @PutMapping("/{id}")
-    public CategoryDto update(@PathVariable Long id, SaveAndUpdateCategoryRequest saveAndUpdateCategoryRequest){
-        return categoryService.update(id, saveAndUpdateCategoryRequest);
+    public ResponseEntity<CategoryDto> update(@PathVariable Long id, SaveAndUpdateCategoryRequest saveAndUpdateCategoryRequest){
+        return ResponseEntity.ok(categoryService.update(id, saveAndUpdateCategoryRequest));
     }
 
     @DeleteMapping("/{id}")
@@ -31,12 +32,12 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<CategoryDto> getAll(){
-        return categoryService.getAllCategories();
+    public ResponseEntity<List<CategoryDto>> getAll(){
+        return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
     @GetMapping("/{id}")
-    public CategoryDto getCategoryById(@PathVariable Long id){
-        return categoryService.getCategoryById(id);
+    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable Long id){
+        return ResponseEntity.ok(categoryService.getCategoryById(id));
     }
 }

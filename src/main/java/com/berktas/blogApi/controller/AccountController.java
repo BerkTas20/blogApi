@@ -9,10 +9,9 @@ import com.berktas.blogApi.core.utils.annotation.PermitAllCustom;
 import com.berktas.blogApi.service.AccountService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController
@@ -31,9 +30,9 @@ public class AccountController {
 
     @PostMapping("/login")
     @PermitAllCustom
-    public LoginResponse login(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
 
-        return accountService.login(loginRequest);
+        return ResponseEntity.ok(accountService.login(loginRequest));
     }
 
 }
