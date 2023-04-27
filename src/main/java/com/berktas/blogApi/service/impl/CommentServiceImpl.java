@@ -32,8 +32,12 @@ public class CommentServiceImpl implements CommentService {
     public CommentDto save(SaveAndUpdateCommentRequest commentRequest, Long postId, Long userId) {
         Post post = postRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("Post not found" + postId));
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
-        ;
-        //context teki user çağırılacak
+
+        String description = commentRequest.getDescription();
+        if (commentRepository.existsByDescriptionAndUser(description, user)) {
+            throw new RuntimeException("Bu kullanıcı zaten aynı yorumu ekledi.");
+        }
+
         Comment comment = new Comment();
         comment.setDescription(commentRequest.getDescription());
         comment.setUser(user);
