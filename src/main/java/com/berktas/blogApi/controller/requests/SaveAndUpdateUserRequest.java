@@ -3,6 +3,7 @@ package com.berktas.blogApi.controller.requests;
 import com.berktas.blogApi.model.enums.Role;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Builder
@@ -15,6 +16,5 @@ public class SaveAndUpdateUserRequest {
         private String email;
         private String password;
         private Role role;
-
 
 }

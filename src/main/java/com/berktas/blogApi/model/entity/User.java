@@ -43,12 +43,12 @@ public class User extends AbstractTimestampEntity {
     @Lob
     private byte[] profilePhoto;
 
-
+    @Lob
+    private byte[] coverPhoto;
 
     protected void setUserType(UserType value) {
         userType = value;
     }
-
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts;

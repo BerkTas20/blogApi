@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -24,14 +25,15 @@ public class PostController {
     @PostMapping("/{userId}/categories/{categoryId}")
     public ResponseEntity<PostDto> save(SavePostRequest savePostRequest,
                                         @PathVariable Long userId,
-                                        @PathVariable Long categoryId
+                                        @PathVariable Long categoryId,
+                                        @RequestParam(required = false) MultipartFile photo
     ) {
-        return ResponseEntity.ok(postService.save(savePostRequest, userId, categoryId));
+        return ResponseEntity.ok(postService.save(savePostRequest, userId, categoryId, photo));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PostDto> updatePost(@PathVariable Long id, @RequestBody UpdatePostRequest updatePostRequest) {
-        return ResponseEntity.ok(postService.update(id, updatePostRequest));
+    public ResponseEntity<PostDto> updatePost(@PathVariable Long id, @RequestBody UpdatePostRequest updatePostRequest, @RequestParam(required = false) MultipartFile photo) {
+        return ResponseEntity.ok(postService.update(id, updatePostRequest, photo));
     }
 
     @DeleteMapping("/{id}")
