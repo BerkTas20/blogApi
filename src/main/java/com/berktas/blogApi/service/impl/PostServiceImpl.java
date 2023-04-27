@@ -16,13 +16,18 @@ import com.berktas.blogApi.repository.TagRepository;
 import com.berktas.blogApi.repository.UserRepository;
 import com.berktas.blogApi.service.PostService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +35,9 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class PostServiceImpl implements PostService {
+    private static final Logger logger = LoggerFactory.getLogger(PostService.class);
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
@@ -38,7 +45,7 @@ public class PostServiceImpl implements PostService {
     private final TagRepository tagRepository;
 
     @Override
-    public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId) {
+    public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId, MultipartFile photo) {
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("User not found" + categoryId));
         Post post = new Post();
@@ -46,17 +53,37 @@ public class PostServiceImpl implements PostService {
         post.setDescription(savePostRequest.getDescription());
         post.setUser(user);
         post.setCategory(category);
+
+        // Fotoğrafı byte dizisine dönüştür
+        try {
+            byte[] photoBytes = photo.getBytes();
+            post.setPhoto(photoBytes);
+        } catch (IOException e) {
+            logger.error("Fotoğraf yüklenirken bir hata oluştu: " + e.getMessage());
+            throw new RuntimeException("Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin.");
+        }
+
         return postMapper.entityToDto(postRepository.save(post));
 
     }
 
     @Override
-    public PostDto update(Long id, UpdatePostRequest updatePostRequest) {
+    public PostDto update(Long id, UpdatePostRequest updatePostRequest, MultipartFile photo) {
         Post post = postRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found" + id));
         Category category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found" + id));
         post.setTitle(updatePostRequest.getTitle());
         post.setDescription(updatePostRequest.getDescription());
         post.setCategory(category);
+
+        if (photo != null && !photo.isEmpty()){
+            try {
+                byte[] photoBytes = photo.getBytes();
+                post.setPhoto(photoBytes);
+            } catch (IOException e) {
+                logger.error("Fotoğraf yüklenirken bir hata oluştu: " + e.getMessage());
+                throw new RuntimeException("Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin.");
+            }
+        }
         return postMapper.entityToDto(postRepository.save(post));
     }
 

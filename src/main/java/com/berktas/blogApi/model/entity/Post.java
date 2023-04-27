@@ -13,6 +13,9 @@ import java.util.List;
 public class Post extends AbstractTimestampEntity {
 
     private String title;
+    @Lob
+    @Column(name="photo", nullable=true, columnDefinition="mediumblob")
+    private byte[] photo;
     private String description;
     private Integer views;
 

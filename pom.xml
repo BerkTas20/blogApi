@@ -78,7 +78,11 @@
 			<version>2.1.0</version>
 		</dependency>
 
-
+		<!-- Elasticsearch  -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-elasticsearch</artifactId>
+		</dependency>
 
 		<!-- JWT and Security-->
 		<dependency>
