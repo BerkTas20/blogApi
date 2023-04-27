@@ -5,7 +5,9 @@ import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
 import com.berktas.blogApi.core.security.SpringContext;
 import com.berktas.blogApi.model.enums.Role;
 import com.berktas.blogApi.model.enums.UserType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -19,6 +21,8 @@ import java.util.List;
 @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE )
 @Table
+@NoArgsConstructor
+@AllArgsConstructor
 public class User extends AbstractTimestampEntity {
 
     private String firstName;
@@ -38,6 +42,8 @@ public class User extends AbstractTimestampEntity {
 
     @Lob
     private byte[] profilePhoto;
+
+
 
     protected void setUserType(UserType value) {
         userType = value;
