@@ -45,7 +45,7 @@ public class PostServiceImpl implements PostService {
     private final TagRepository tagRepository;
 
     @Override
-    public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId, MultipartFile photo) {
+    public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("User not found" + categoryId));
         Post post = new Post();
@@ -54,36 +54,19 @@ public class PostServiceImpl implements PostService {
         post.setUser(user);
         post.setCategory(category);
 
-        // Fotoğrafı byte dizisine dönüştür
-        try {
-            byte[] photoBytes = photo.getBytes();
-            post.setPhoto(photoBytes);
-        } catch (IOException e) {
-            logger.error("Fotoğraf yüklenirken bir hata oluştu: " + e.getMessage());
-            throw new RuntimeException("Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin.");
-        }
 
         return postMapper.entityToDto(postRepository.save(post));
 
     }
 
     @Override
-    public PostDto update(Long id, UpdatePostRequest updatePostRequest, MultipartFile photo) {
+    public PostDto update(Long id, UpdatePostRequest updatePostRequest) {
         Post post = postRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found" + id));
         Category category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found" + id));
         post.setTitle(updatePostRequest.getTitle());
         post.setDescription(updatePostRequest.getDescription());
         post.setCategory(category);
 
-        if (photo != null && !photo.isEmpty()){
-            try {
-                byte[] photoBytes = photo.getBytes();
-                post.setPhoto(photoBytes);
-            } catch (IOException e) {
-                logger.error("Fotoğraf yüklenirken bir hata oluştu: " + e.getMessage());
-                throw new RuntimeException("Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin.");
-            }
-        }
         return postMapper.entityToDto(postRepository.save(post));
     }
 

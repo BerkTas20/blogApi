@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 public interface PostService {
-    PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId, MultipartFile photo);
-    PostDto update(Long id, UpdatePostRequest updatePostRequest, MultipartFile photo);
+    PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId);
+    PostDto update(Long id, UpdatePostRequest updatePostRequest);
     void delete(Long id);
     PostResponse getAllPosts(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
     PostDto getOnePostById(Long postId);

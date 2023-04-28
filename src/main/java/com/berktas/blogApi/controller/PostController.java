@@ -25,15 +25,14 @@ public class PostController {
     @PostMapping("/{userId}/categories/{categoryId}")
     public ResponseEntity<PostDto> save(SavePostRequest savePostRequest,
                                         @PathVariable Long userId,
-                                        @PathVariable Long categoryId,
-                                        @RequestParam(required = false) MultipartFile photo
+                                        @PathVariable Long categoryId
     ) {
-        return ResponseEntity.ok(postService.save(savePostRequest, userId, categoryId, photo));
+        return ResponseEntity.ok(postService.save(savePostRequest, userId, categoryId));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PostDto> updatePost(@PathVariable Long id, @RequestBody UpdatePostRequest updatePostRequest, @RequestParam(required = false) MultipartFile photo) {
-        return ResponseEntity.ok(postService.update(id, updatePostRequest, photo));
+    public ResponseEntity<PostDto> updatePost(@PathVariable Long id, @RequestBody UpdatePostRequest updatePostRequest) {
+        return ResponseEntity.ok(postService.update(id, updatePostRequest));
     }
 
     @DeleteMapping("/{id}")

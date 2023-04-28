@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-//@todo profil ve kapak fotoğrafı için iki ayrı istek lazım.
+//@todo profil ve kapak fotoğrafı için iki ayrı istek lazım. paylaşılan son postlar için de kategoriye göre
 
     private final UserRepository userRepository;
 
