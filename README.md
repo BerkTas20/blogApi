@@ -8,6 +8,7 @@ Simple Blog Api -- Java 17 Spring boot 2.5.5
 - Open in eclipse or Intellij idea.
 - You must make a database connection carefully.
 - Create a schema in Mysql Workbench.
+- git clone https://github.com/BerkTas20/blogApi.git or download GithubDesktop. Enter file -> clone repository
 
 #DB CONNECTION
 > spring.datasource.url =jdbc:mariadb://localhost:3306/blogapi_develop
