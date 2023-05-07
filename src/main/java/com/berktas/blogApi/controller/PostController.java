@@ -3,6 +3,7 @@ package com.berktas.blogApi.controller;
 import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SavePostRequest;
 import com.berktas.blogApi.controller.requests.UpdatePostRequest;
+import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.PostDto;
 import com.berktas.blogApi.model.entity.Post;
 import com.berktas.blogApi.service.PostService;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -66,5 +68,4 @@ public class PostController {
     public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords") String keywords) {
         return new ResponseEntity<List<PostDto>>(postService.searchPosts(keywords), HttpStatus.OK);
     }
-
 }

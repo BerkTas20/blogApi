@@ -10,9 +10,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -76,6 +78,22 @@ public class User extends AbstractTimestampEntity {
 
     public void changePassword(String rawPassword) {
         password = new BCryptPasswordEncoder().encode(rawPassword);
+    }
+
+    public void updateProfilePhoto(MultipartFile file) throws IOException {
+        this.profilePhoto = file.getBytes();
+    }
+
+    public void updateCoverPhoto(MultipartFile file) throws IOException {
+        this.coverPhoto = file.getBytes();
+    }
+
+    public void deleteProfilePhoto() {
+        this.profilePhoto = null;
+    }
+
+    public void deleteCoverPhoto() {
+        this.coverPhoto = null;
     }
 
 }

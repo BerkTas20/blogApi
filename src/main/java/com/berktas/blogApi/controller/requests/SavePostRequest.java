@@ -13,5 +13,4 @@ import org.springframework.web.multipart.MultipartFile;
 public class SavePostRequest {
     private String description;
     private String title;
-    private MultipartFile photo;
 }

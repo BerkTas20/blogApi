@@ -4,16 +4,12 @@ import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SavePostRequest;
 import com.berktas.blogApi.controller.requests.UpdatePostRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
+import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.PostDto;
-import com.berktas.blogApi.model.entity.Category;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.Tag;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.entity.*;
+import com.berktas.blogApi.model.mapper.PhotoMapper;
 import com.berktas.blogApi.model.mapper.PostMapper;
-import com.berktas.blogApi.repository.CategoryRepository;
-import com.berktas.blogApi.repository.PostRepository;
-import com.berktas.blogApi.repository.TagRepository;
-import com.berktas.blogApi.repository.UserRepository;
+import com.berktas.blogApi.repository.*;
 import com.berktas.blogApi.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +38,9 @@ public class PostServiceImpl implements PostService {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
     private final PostMapper postMapper;
-    private final TagRepository tagRepository;
+    private final PhotoMapper photoMapper;
+    private final PhotoRepository photoRepository;
+
 
     @Override
     public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId) {
@@ -122,5 +120,8 @@ public class PostServiceImpl implements PostService {
         List<Post> posts = postRepository.searchByTitle("%" + keyword + "%");
         return postMapper.entityListToDtoList(posts);
     }
+
+
+
 
 }

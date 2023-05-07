@@ -1,40 +1,39 @@
 package com.berktas.blogApi.service.impl;
 
-import com.berktas.blogApi.controller.requests.SaveAndUpdateCommentRequest;
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
-import com.berktas.blogApi.model.dto.CommentDto;
-import com.berktas.blogApi.model.dto.PostDto;
+import com.berktas.blogApi.core.security.SpringContext;
+import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.UserDto;
-import com.berktas.blogApi.model.entity.Comment;
-import com.berktas.blogApi.model.entity.Post;
+import com.berktas.blogApi.model.entity.Photo;
 import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.mapper.CommentMapper;
+import com.berktas.blogApi.model.mapper.PhotoMapper;
 import com.berktas.blogApi.model.mapper.UserMapper;
-import com.berktas.blogApi.repository.CommentRepository;
-import com.berktas.blogApi.repository.PostRepository;
+import com.berktas.blogApi.repository.PhotoRepository;
 import com.berktas.blogApi.repository.UserRepository;
-import com.berktas.blogApi.service.CommentService;
 import com.berktas.blogApi.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-//@todo profil ve kapak fotoğrafı için iki ayrı istek lazım. paylaşılan son postlar için de kategoriye göre
 
     private final UserRepository userRepository;
+    private final PhotoRepository photoRepository;
 
     private final UserMapper userMapper;
+
+    private final PhotoMapper photoMapper;
+    private final SpringContext springContext;
 
     @Override
     public UserDto save(SaveAndUpdateUserRequest saveUserRequest) {
@@ -70,5 +69,49 @@ public class UserServiceImpl implements UserService {
         return userMapper.entityListToDtoList(userRepository.findAll());
     }
 
+    @Override
+    public void uploadProfilePhoto(Long userId, MultipartFile file) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
+        try {
+            user.updateProfilePhoto(file);
+            userRepository.save(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Override
+    public void uploadCoverPhoto(Long userId, MultipartFile file) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
+        try {
+            user.updateCoverPhoto(file);
+            userRepository.save(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteProfilePhoto(User user) {
+        user.deleteProfilePhoto();
+        userRepository.save(user);
+    }
+
+    @Override
+    public void deleteCoverPhoto(User user) {
+        user.deleteCoverPhoto();
+        userRepository.save(user);
+    }
+
+    @Override
+    public byte[] getProfilePhoto(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
+
+        if (user.getProfilePhoto() == null) {
+            throw new EntityNotFoundException("User does not have a profile photo");
+        }
+
+        return user.getProfilePhoto();
+    }
 }

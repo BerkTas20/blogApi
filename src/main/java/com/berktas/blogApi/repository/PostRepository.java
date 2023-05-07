@@ -3,10 +3,7 @@ package com.berktas.blogApi.repository;
 import com.berktas.blogApi.core.repository.BaseRepository;
 import com.berktas.blogApi.model.entity.Category;
 import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.Tag;
 import com.berktas.blogApi.model.entity.User;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 

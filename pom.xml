@@ -69,7 +69,19 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Apache Commons FileUpload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
 
+		<!-- Apache Commons IO -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
 
 		<!-- RSQL FİLTER -->
 		<dependency>

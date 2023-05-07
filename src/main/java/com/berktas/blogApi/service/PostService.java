@@ -3,6 +3,7 @@ package com.berktas.blogApi.service;
 import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SavePostRequest;
 import com.berktas.blogApi.controller.requests.UpdatePostRequest;
+import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.PostDto;
 import org.springframework.web.multipart.MultipartFile;
 
