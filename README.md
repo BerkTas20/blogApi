@@ -10,9 +10,9 @@ Simple Blog Api -- Java 17 Spring boot 2.5.5
 - Create a schema in Mysql Workbench.
 
 #DB CONNECTION
-spring.datasource.url =jdbc:mariadb://localhost:3306/blogapi_develop
-spring.datasource.username =root
-spring.datasource.password =12345
+> spring.datasource.url =jdbc:mariadb://localhost:3306/blogapi_develop
+> spring.datasource.username =root
+> spring.datasource.password =12345
 
 - You must enter your own password.
 - This is our database name => blogapi_develop
