@@ -9,7 +9,6 @@ import com.berktas.blogApi.model.Category;
 import com.berktas.blogApi.model.Post;
 import com.berktas.blogApi.model.Score;
 import com.berktas.blogApi.model.User;
-import com.berktas.blogApi.model.entity.*;
 import com.berktas.blogApi.mapper.PostMapper;
 import com.berktas.blogApi.repository.*;
 import com.berktas.blogApi.service.PostService;
