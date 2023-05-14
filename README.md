@@ -1,7 +1,7 @@
 # blogApi
 My Blog Api
 
-Simple Blog Api -- Java 17 Spring boot 2.5.5
+Simple Blog Api -- Java 17 Spring boot 2.5.5 -- Hibernate / JPA -- MYSQL Workbenc -- RSQL Filter -- Unit Test
 
 İnstallation:
 - Download project. 
