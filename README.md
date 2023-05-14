@@ -24,4 +24,4 @@ Simple Blog Api -- Java 17 Spring boot 2.5.5
 - This is swagger url : http://localhost:8090/api/v1/swagger-ui/index.html
 
 Db Diagram:
-![Image of Yaktocat](https://i.hizliresim.com/hwratdv.png)
+![Image of Yaktocat](https://i.hizliresim.com/qvrtxfj.png)
