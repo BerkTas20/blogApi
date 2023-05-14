@@ -3,9 +3,9 @@ package com.berktas.blogApi.core.entity;
 
 
 
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.enums.Role;
-import com.berktas.blogApi.model.enums.UserType;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.enums.Role;
+import com.berktas.blogApi.enums.UserType;
 
 import javax.persistence.Entity;
 

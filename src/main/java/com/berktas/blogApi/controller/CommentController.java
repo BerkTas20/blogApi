@@ -1,7 +1,7 @@
 package com.berktas.blogApi.controller;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateCommentRequest;
-import com.berktas.blogApi.model.dto.CommentDto;
+import com.berktas.blogApi.dto.CommentDto;
 import com.berktas.blogApi.service.CommentService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

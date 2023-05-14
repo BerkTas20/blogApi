@@ -1,4 +1,4 @@
-package com.berktas.blogApi.model.dto;
+package com.berktas.blogApi.dto;
 
 public record TagDto(Long id, String name) {
 }

@@ -1,6 +1,6 @@
 package com.berktas.blogApi.controller;
 
-import com.berktas.blogApi.model.dto.PhotoDto;
+import com.berktas.blogApi.dto.PhotoDto;
 import com.berktas.blogApi.service.PhotoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

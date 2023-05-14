@@ -3,19 +3,15 @@ package com.berktas.blogApi.controller;
 import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SavePostRequest;
 import com.berktas.blogApi.controller.requests.UpdatePostRequest;
-import com.berktas.blogApi.model.dto.PhotoDto;
-import com.berktas.blogApi.model.dto.PostDto;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.dto.PostDto;
+import com.berktas.blogApi.model.Post;
 import com.berktas.blogApi.service.PostService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController

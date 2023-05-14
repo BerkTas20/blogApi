@@ -1,8 +1,6 @@
-package com.berktas.blogApi.model.dto;
+package com.berktas.blogApi.dto;
 
-import com.berktas.blogApi.model.enums.Role;
-import lombok.Getter;
-import lombok.Setter;
+import com.berktas.blogApi.enums.Role;
 
 
 public record UserDto(Long id,

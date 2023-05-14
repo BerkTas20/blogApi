@@ -1,21 +1,14 @@
 package com.berktas.blogApi.service.impl;
 
-import com.berktas.blogApi.controller.requests.SaveAndUpdateCommentRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
-import com.berktas.blogApi.core.security.SpringContext;
-import com.berktas.blogApi.model.dto.CommentDto;
-import com.berktas.blogApi.model.dto.PhotoDto;
-import com.berktas.blogApi.model.entity.Comment;
-import com.berktas.blogApi.model.entity.Photo;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.mapper.CommentMapper;
-import com.berktas.blogApi.model.mapper.PhotoMapper;
-import com.berktas.blogApi.repository.CommentRepository;
+import com.berktas.blogApi.dto.PhotoDto;
+import com.berktas.blogApi.model.Photo;
+import com.berktas.blogApi.model.Post;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.mapper.PhotoMapper;
 import com.berktas.blogApi.repository.PhotoRepository;
 import com.berktas.blogApi.repository.PostRepository;
 import com.berktas.blogApi.repository.UserRepository;
-import com.berktas.blogApi.service.CommentService;
 import com.berktas.blogApi.service.PhotoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,9 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional

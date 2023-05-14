@@ -1,6 +1,6 @@
 package com.berktas.blogApi.controller.requests;
 
-import com.berktas.blogApi.model.dto.PostDto;
+import com.berktas.blogApi.dto.PostDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

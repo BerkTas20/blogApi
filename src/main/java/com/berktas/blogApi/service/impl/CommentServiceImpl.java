@@ -2,11 +2,11 @@ package com.berktas.blogApi.service.impl;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateCommentRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
-import com.berktas.blogApi.model.dto.CommentDto;
-import com.berktas.blogApi.model.entity.Comment;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.mapper.CommentMapper;
+import com.berktas.blogApi.dto.CommentDto;
+import com.berktas.blogApi.model.Comment;
+import com.berktas.blogApi.model.Post;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.mapper.CommentMapper;
 import com.berktas.blogApi.repository.CommentRepository;
 import com.berktas.blogApi.repository.PostRepository;
 import com.berktas.blogApi.repository.UserRepository;

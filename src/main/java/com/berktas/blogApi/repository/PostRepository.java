@@ -1,9 +1,9 @@
 package com.berktas.blogApi.repository;
 
 import com.berktas.blogApi.core.repository.BaseRepository;
-import com.berktas.blogApi.model.entity.Category;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.Category;
+import com.berktas.blogApi.model.Post;
+import com.berktas.blogApi.model.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 

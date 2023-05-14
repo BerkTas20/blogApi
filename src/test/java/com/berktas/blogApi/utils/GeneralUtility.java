@@ -2,7 +2,7 @@ package com.berktas.blogApi.utils;
 
 import com.berktas.blogApi.core.security.CustomUserDetails;
 import com.berktas.blogApi.core.security.JwtTokenUtil;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

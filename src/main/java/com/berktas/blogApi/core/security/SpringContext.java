@@ -2,7 +2,7 @@ package com.berktas.blogApi.core.security;
 
 
 import com.berktas.blogApi.controller.requests.MeResponse;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

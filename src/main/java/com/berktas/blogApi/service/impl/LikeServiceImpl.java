@@ -1,11 +1,11 @@
 package com.berktas.blogApi.service.impl;
 
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
-import com.berktas.blogApi.model.dto.LikeDto;
-import com.berktas.blogApi.model.entity.Like;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.mapper.LikeMapper;
+import com.berktas.blogApi.dto.LikeDto;
+import com.berktas.blogApi.model.Like;
+import com.berktas.blogApi.model.Post;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.mapper.LikeMapper;
 import com.berktas.blogApi.repository.LikeRepository;
 import com.berktas.blogApi.repository.PostRepository;
 import com.berktas.blogApi.repository.UserRepository;

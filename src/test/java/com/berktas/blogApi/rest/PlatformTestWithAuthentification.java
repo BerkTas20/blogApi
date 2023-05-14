@@ -2,8 +2,7 @@ package com.berktas.blogApi.rest;
 
 
 
-import com.berktas.blogApi.core.entity.Admin;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.User;
 import com.berktas.blogApi.utils.TestUserUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 

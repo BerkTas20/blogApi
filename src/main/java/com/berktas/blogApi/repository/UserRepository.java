@@ -1,8 +1,8 @@
 package com.berktas.blogApi.repository;
 
 import com.berktas.blogApi.core.repository.BaseRepository;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.enums.Role;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.enums.Role;
 
 import java.util.Optional;
 

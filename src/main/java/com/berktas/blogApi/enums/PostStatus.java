@@ -1,4 +1,4 @@
-package com.berktas.blogApi.model.enums;
+package com.berktas.blogApi.enums;
 
 public enum PostStatus {
     DRAFT("Draft"),

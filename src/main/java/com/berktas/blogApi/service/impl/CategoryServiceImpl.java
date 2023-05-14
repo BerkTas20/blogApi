@@ -2,9 +2,9 @@ package com.berktas.blogApi.service.impl;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateCategoryRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
-import com.berktas.blogApi.model.dto.CategoryDto;
-import com.berktas.blogApi.model.entity.Category;
-import com.berktas.blogApi.model.mapper.CategoryMapper;
+import com.berktas.blogApi.dto.CategoryDto;
+import com.berktas.blogApi.model.Category;
+import com.berktas.blogApi.mapper.CategoryMapper;
 import com.berktas.blogApi.repository.CategoryRepository;
 import com.berktas.blogApi.service.CategoryService;
 import lombok.RequiredArgsConstructor;

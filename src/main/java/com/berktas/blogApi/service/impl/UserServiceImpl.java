@@ -3,25 +3,20 @@ package com.berktas.blogApi.service.impl;
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
 import com.berktas.blogApi.core.security.SpringContext;
-import com.berktas.blogApi.model.dto.PhotoDto;
-import com.berktas.blogApi.model.dto.UserDto;
-import com.berktas.blogApi.model.entity.Photo;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.enums.Role;
-import com.berktas.blogApi.model.mapper.PhotoMapper;
-import com.berktas.blogApi.model.mapper.UserMapper;
+import com.berktas.blogApi.dto.UserDto;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.mapper.PhotoMapper;
+import com.berktas.blogApi.mapper.UserMapper;
 import com.berktas.blogApi.repository.PhotoRepository;
 import com.berktas.blogApi.repository.UserRepository;
 import com.berktas.blogApi.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service

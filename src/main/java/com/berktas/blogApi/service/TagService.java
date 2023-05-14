@@ -1,11 +1,7 @@
 package com.berktas.blogApi.service;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateTagRequest;
-import com.berktas.blogApi.model.dto.PostDto;
-import com.berktas.blogApi.model.dto.TagDto;
-import com.berktas.blogApi.model.entity.Tag;
-
-import java.util.List;
+import com.berktas.blogApi.dto.TagDto;
 
 public interface TagService {
     TagDto save(SaveAndUpdateTagRequest saveAndUpdateTagRequest);

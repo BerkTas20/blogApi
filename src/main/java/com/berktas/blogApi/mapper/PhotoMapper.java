@@ -1,8 +1,8 @@
-package com.berktas.blogApi.model.mapper;
+package com.berktas.blogApi.mapper;
 
 import com.berktas.blogApi.core.mapper.BaseMapper;
-import com.berktas.blogApi.model.dto.PhotoDto;
-import com.berktas.blogApi.model.entity.Photo;
+import com.berktas.blogApi.dto.PhotoDto;
+import com.berktas.blogApi.model.Photo;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

@@ -1,15 +1,10 @@
 package com.berktas.blogApi.service.impl;
 
-import com.berktas.blogApi.controller.requests.SavePostRequest;
-import com.berktas.blogApi.model.dto.PhotoDto;
-import com.berktas.blogApi.model.dto.PostDto;
-import com.berktas.blogApi.model.entity.Category;
-import com.berktas.blogApi.model.entity.Photo;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.mapper.PhotoMapper;
-import com.berktas.blogApi.model.mapper.PostMapper;
-import com.berktas.blogApi.repository.CategoryRepository;
+import com.berktas.blogApi.dto.PhotoDto;
+import com.berktas.blogApi.model.Photo;
+import com.berktas.blogApi.model.Post;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.mapper.PhotoMapper;
 import com.berktas.blogApi.repository.PhotoRepository;
 import com.berktas.blogApi.repository.PostRepository;
 import com.berktas.blogApi.repository.UserRepository;

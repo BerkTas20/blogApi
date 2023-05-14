@@ -3,7 +3,7 @@ package com.berktas.blogApi.rest;
 
 import com.berktas.blogApi.core.security.CustomUserDetails;
 import com.berktas.blogApi.core.security.JwtTokenUtil;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.User;
 import io.restassured.RestAssured;
 import io.restassured.config.FailureConfig;
 import io.restassured.http.ContentType;

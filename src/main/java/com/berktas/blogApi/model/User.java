@@ -1,11 +1,10 @@
-package com.berktas.blogApi.model.entity;
+package com.berktas.blogApi.model;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
 import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
 import com.berktas.blogApi.core.security.SpringContext;
-import com.berktas.blogApi.model.enums.Role;
-import com.berktas.blogApi.model.enums.UserType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.berktas.blogApi.enums.Role;
+import com.berktas.blogApi.enums.UserType;
 import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,7 +37,7 @@ public class User extends AbstractTimestampEntity {
 
     @Column(name = "user_type", updatable = false, insertable = false)
     @Enumerated(EnumType.STRING)
-    private com.berktas.blogApi.model.enums.UserType userType;
+    private UserType userType;
 
     @Lob
     private byte[] profilePhoto;

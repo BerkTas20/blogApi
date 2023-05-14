@@ -1,7 +1,7 @@
 package com.berktas.blogApi.service;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateCommentRequest;
-import com.berktas.blogApi.model.dto.CommentDto;
+import com.berktas.blogApi.dto.CommentDto;
 
 import java.util.List;
 import java.util.Optional;

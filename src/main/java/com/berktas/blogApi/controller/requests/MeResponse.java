@@ -1,8 +1,8 @@
 package com.berktas.blogApi.controller.requests;
 
 
-import com.berktas.blogApi.model.enums.Role;
-import com.berktas.blogApi.model.enums.UserType;
+import com.berktas.blogApi.enums.Role;
+import com.berktas.blogApi.enums.UserType;
 import lombok.Builder;
 import lombok.Data;
 

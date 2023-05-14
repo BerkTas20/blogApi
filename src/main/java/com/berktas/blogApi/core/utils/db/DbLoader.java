@@ -2,8 +2,8 @@ package com.berktas.blogApi.core.utils.db;
 
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.enums.Role;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.enums.Role;
 import com.berktas.blogApi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;

@@ -1,22 +1,12 @@
 package com.berktas.blogApi.controller;
 
-import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
-import com.berktas.blogApi.controller.requests.SavePostRequest;
-import com.berktas.blogApi.controller.requests.UpdatePostRequest;
-import com.berktas.blogApi.core.security.SpringContext;
-import com.berktas.blogApi.core.utils.annotation.OnlyAdmin;
-import com.berktas.blogApi.model.dto.PostDto;
-import com.berktas.blogApi.model.dto.UserDto;
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.service.PostService;
+import com.berktas.blogApi.dto.UserDto;
 import com.berktas.blogApi.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

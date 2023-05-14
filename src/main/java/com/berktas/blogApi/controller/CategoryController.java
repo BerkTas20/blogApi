@@ -1,7 +1,7 @@
 package com.berktas.blogApi.controller;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateCategoryRequest;
-import com.berktas.blogApi.model.dto.CategoryDto;
+import com.berktas.blogApi.dto.CategoryDto;
 import com.berktas.blogApi.service.CategoryService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

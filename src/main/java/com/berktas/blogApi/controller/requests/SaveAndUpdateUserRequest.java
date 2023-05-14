@@ -1,8 +1,7 @@
 package com.berktas.blogApi.controller.requests;
 
-import com.berktas.blogApi.model.enums.Role;
+import com.berktas.blogApi.enums.Role;
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Builder

@@ -1,13 +1,10 @@
 package com.berktas.blogApi.service;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateUserRequest;
-import com.berktas.blogApi.model.dto.PhotoDto;
-import com.berktas.blogApi.model.dto.UserDto;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.dto.UserDto;
+import com.berktas.blogApi.model.User;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface UserService {

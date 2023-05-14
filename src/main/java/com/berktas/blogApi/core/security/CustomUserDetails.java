@@ -1,7 +1,7 @@
 package com.berktas.blogApi.core.security;
 
-import com.berktas.blogApi.model.entity.User;
-import com.berktas.blogApi.model.enums.Role;
+import com.berktas.blogApi.model.User;
+import com.berktas.blogApi.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 @Data
 public class CustomUserDetails implements UserDetails {

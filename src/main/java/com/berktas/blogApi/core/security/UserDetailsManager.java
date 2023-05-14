@@ -1,7 +1,7 @@
 package com.berktas.blogApi.core.security;
 
 
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.User;
 import com.berktas.blogApi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;

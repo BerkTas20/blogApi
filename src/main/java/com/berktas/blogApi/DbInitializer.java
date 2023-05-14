@@ -1,6 +1,6 @@
 package com.berktas.blogApi;
 
-import com.berktas.blogApi.model.entity.Category;
+import com.berktas.blogApi.model.Category;
 import com.berktas.blogApi.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;

@@ -2,18 +2,15 @@ package com.berktas.blogApi.service.impl;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateTagRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
-import com.berktas.blogApi.model.dto.PostDto;
-import com.berktas.blogApi.model.dto.TagDto;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.Tag;
-import com.berktas.blogApi.model.mapper.TagMapper;
+import com.berktas.blogApi.dto.TagDto;
+import com.berktas.blogApi.model.Tag;
+import com.berktas.blogApi.mapper.TagMapper;
 import com.berktas.blogApi.repository.TagRepository;
 import com.berktas.blogApi.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional

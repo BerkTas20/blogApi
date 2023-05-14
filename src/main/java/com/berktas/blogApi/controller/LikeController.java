@@ -1,6 +1,6 @@
 package com.berktas.blogApi.controller;
 
-import com.berktas.blogApi.model.dto.LikeDto;
+import com.berktas.blogApi.dto.LikeDto;
 import com.berktas.blogApi.service.LikeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

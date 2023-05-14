@@ -8,7 +8,7 @@ import com.berktas.blogApi.core.exception.validator.UserDisabledException;
 import com.berktas.blogApi.core.security.CustomUserDetails;
 import com.berktas.blogApi.core.security.JwtTokenUtil;
 import com.berktas.blogApi.core.security.SpringContext;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.User;
 import com.berktas.blogApi.repository.UserRepository;
 
 import com.berktas.blogApi.service.AccountService;

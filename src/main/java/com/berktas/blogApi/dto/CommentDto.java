@@ -1,6 +1,4 @@
-package com.berktas.blogApi.model.dto;
-
-import com.berktas.blogApi.model.entity.Comment;
+package com.berktas.blogApi.dto;
 
 public record CommentDto(Long id,
                          String description,

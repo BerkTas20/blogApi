@@ -1,7 +1,7 @@
 package com.berktas.blogApi.service;
 
 import com.berktas.blogApi.controller.requests.SaveAndUpdateCategoryRequest;
-import com.berktas.blogApi.model.dto.CategoryDto;
+import com.berktas.blogApi.dto.CategoryDto;
 
 import java.util.List;
 

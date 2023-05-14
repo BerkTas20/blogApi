@@ -1,9 +1,8 @@
 package com.berktas.blogApi.repository;
 
 import com.berktas.blogApi.core.repository.BaseRepository;
-import com.berktas.blogApi.model.entity.Comment;
-import com.berktas.blogApi.model.entity.Post;
-import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.Comment;
+import com.berktas.blogApi.model.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.berktas.blogApi.model.entity;
+package com.berktas.blogApi.model;
 
 import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
 import lombok.Getter;

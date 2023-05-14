@@ -1,11 +1,7 @@
 package com.berktas.blogApi.controller;
 
-import com.berktas.blogApi.controller.requests.SaveAndUpdateCommentRequest;
 import com.berktas.blogApi.controller.requests.SaveAndUpdateTagRequest;
-import com.berktas.blogApi.model.dto.CommentDto;
-import com.berktas.blogApi.model.dto.PostDto;
-import com.berktas.blogApi.model.dto.TagDto;
-import com.berktas.blogApi.model.entity.Tag;
+import com.berktas.blogApi.dto.TagDto;
 import com.berktas.blogApi.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
