@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(SpringExtension.class)
+@ExtendWith(SpringExtension.class) //unit testi rest assured kullanarak yapmak istersen
 @AutoConfigureMockMvc
 @TestPropertySource(
         locations = "classpath:application-test.properties")
