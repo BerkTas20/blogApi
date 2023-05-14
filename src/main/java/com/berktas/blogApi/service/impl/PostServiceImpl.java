@@ -36,7 +36,7 @@ public class PostServiceImpl implements PostService {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
     private final PostMapper postMapper;
-    private final ScoreRepository rateRepository;
+    private final ScoreRepository scoreRepository;
 
     @Override
     public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId) {
@@ -146,13 +146,13 @@ public class PostServiceImpl implements PostService {
         rate.setUser(user);
         rate.setRating(rating);
 
-        rateRepository.save(rate);
+        scoreRepository.save(rate);
         updatePostAverageRating(post);
     }
 
 
     private void updatePostAverageRating(Post post) {
-        List<Score> ratings = rateRepository.findByPost(post);
+        List<Score> ratings = scoreRepository.findByPost(post);
         double totalRating = 0.0;
 
         for (Score rating : ratings) {
