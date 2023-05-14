@@ -131,6 +131,8 @@ public class PostServiceImpl implements PostService {
         if (views == null) {
             views = 0;
         }
+        views += 1;
+        post.setViews(views);
         postRepository.save(post);
     }
 
