@@ -19,7 +19,7 @@ public interface PostService {
 
     PostDto getOnePostById(Long postId);
 
-    List<PostDto> getPostsByCategory(Long categoryId);
+    List<Post> getPostsByCategory(String categoryName);
 
     List<PostDto> getPostsByUser(Long userId);
 
@@ -30,5 +30,6 @@ public interface PostService {
     void incrementViews(Long postId);
 
     void ratePost(Long postId, Long userId, double rating);
+
 
 }

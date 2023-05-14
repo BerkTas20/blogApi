@@ -4,6 +4,7 @@ import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SavePostRequest;
 import com.berktas.blogApi.controller.requests.UpdatePostRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
+import com.berktas.blogApi.core.utils.rsql.CustomRsqlVisitor;
 import com.berktas.blogApi.dto.PostDto;
 import com.berktas.blogApi.model.Category;
 import com.berktas.blogApi.model.Post;
@@ -20,9 +21,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -98,11 +103,13 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDto> getPostsByCategory(Long categoryId) {
-        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("User not found" + categoryId));
-        List<Post> posts = this.postRepository.findByCategory(category);
-        return postMapper.entityListToDtoList(posts);
+    public List<Post> getPostsByCategory(String categoryName) {
+        Specification<Post> spec = (root, query, builder) ->
+                builder.equal(root.get("category").get("title"), categoryName);
+
+        return postRepository.findAll(spec);
     }
+
 
     @Override
     public List<PostDto> getPostsByUser(Long userId) {
