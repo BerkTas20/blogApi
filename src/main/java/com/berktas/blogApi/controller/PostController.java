@@ -6,6 +6,7 @@ import com.berktas.blogApi.controller.requests.UpdatePostRequest;
 import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.PostDto;
 import com.berktas.blogApi.model.entity.Post;
+import com.berktas.blogApi.model.entity.User;
 import com.berktas.blogApi.service.PostService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -68,4 +69,10 @@ public class PostController {
     public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords") String keywords) {
         return new ResponseEntity<List<PostDto>>(postService.searchPosts(keywords), HttpStatus.OK);
     }
+
+    @GetMapping("/recent/{userId}")
+    public ResponseEntity<List<Post>> getUserRecentPosts(@PathVariable Long userId) {
+        return ResponseEntity.ok(postService.getLatestPostsByUser(userId));
+    }
+
 }

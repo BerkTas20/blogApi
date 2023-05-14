@@ -5,6 +5,8 @@ import com.berktas.blogApi.controller.requests.SavePostRequest;
 import com.berktas.blogApi.controller.requests.UpdatePostRequest;
 import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.PostDto;
+import com.berktas.blogApi.model.entity.Post;
+import com.berktas.blogApi.model.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,4 +21,6 @@ public interface PostService {
     List<PostDto> getPostsByCategory(Long categoryId);
     List<PostDto> getPostsByUser(Long userId);
     List<PostDto> searchPosts(String keyword);
+    List<Post> getLatestPostsByUser(Long userId);
+
 }
