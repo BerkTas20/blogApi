@@ -16,6 +16,6 @@ public interface PostRepository extends BaseRepository<Post> {
     @Query("select p from Post p where p.title like :key")
     List<Post> searchByTitle(@Param("key") String key);
 
-    List<Post> findTop10ByUserOrderByCreatedDateTimeDesc(User user);
+    List<Post> findTop5ByUserOrderByCreatedDateTimeDesc(User user);
 
 }

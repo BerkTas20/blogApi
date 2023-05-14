@@ -126,6 +126,6 @@ public class PostServiceImpl implements PostService {
     public List<Post> getLatestPostsByUser(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
 
-        return postRepository.findTop10ByUserOrderByCreatedDateTimeDesc(user);
+        return postRepository.findTop5ByUserOrderByCreatedDateTimeDesc(user);
     }
 }
