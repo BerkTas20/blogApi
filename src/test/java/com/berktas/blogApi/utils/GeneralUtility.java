@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Component
-public class GeneralUtility {
+public class GeneralUtility {  //this test class used for generating random numbers
 
     private static List<Long> takenRandomNumbers = new ArrayList<>();
     private static Long nextUnique10DigitNumber = 0L;
