@@ -37,14 +37,6 @@ public class PostServiceImplTest {
     @Mock
     private PostMapper postMapper;
 
-//    @Before
-//    public void setUp() {
-//        userRepository = Mockito.mock(UserRepository.class);
-//        postMapper = Mockito.mock(PostMapper.class);
-//        categoryRepository = Mockito.mock(CategoryRepository.class);
-//
-//        postService = new PostServiceImpl(postRepository, categoryRepository);
-//    }
     @Test
     public void shouldSavePostSuccessfully() {
         Long userId = 1L;
