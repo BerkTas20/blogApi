@@ -31,6 +31,7 @@ What can do this backend application ?
 - Posts can be filtered by user and category.
 - User recent posts can be listed.
 - Users can post scores. Scores are averaged and post score determined.
+- Users can comment on posts.
 
 Db Diagram:
 ![Image of Yaktocat](https://i.hizliresim.com/qvrtxfj.png)
