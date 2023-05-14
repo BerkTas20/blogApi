@@ -4,10 +4,8 @@ import com.berktas.blogApi.controller.requests.PostResponse;
 import com.berktas.blogApi.controller.requests.SavePostRequest;
 import com.berktas.blogApi.controller.requests.UpdatePostRequest;
 import com.berktas.blogApi.core.exception.EntityNotFoundException;
-import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.PostDto;
 import com.berktas.blogApi.model.entity.*;
-import com.berktas.blogApi.model.mapper.PhotoMapper;
 import com.berktas.blogApi.model.mapper.PostMapper;
 import com.berktas.blogApi.repository.*;
 import com.berktas.blogApi.service.PostService;
@@ -20,11 +18,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
-import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,10 +33,7 @@ public class PostServiceImpl implements PostService {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
     private final PostMapper postMapper;
-    private final PhotoMapper photoMapper;
-    private final PhotoRepository photoRepository;
-
-
+    private final ScoreRepository rateRepository;
 
     @Override
     public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId) {
@@ -127,5 +119,44 @@ public class PostServiceImpl implements PostService {
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
 
         return postRepository.findTop5ByUserOrderByCreatedDateTimeDesc(user);
+    }
+
+    public void incrementViews(Long postId) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("Post not found"));
+        Integer views = post.getViews();
+
+        if (views == null) {
+            views = 0;
+        }
+        postRepository.save(post);
+    }
+
+    @Override
+    public void ratePost(Long postId, Long userId, double rating) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("Post not found"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        Score rate = new Score();
+        rate.setPost(post);
+        rate.setUser(user);
+        rate.setRating(rating);
+
+        rateRepository.save(rate);
+        updatePostAverageRating(post);
+    }
+
+
+    private void updatePostAverageRating(Post post) {
+        List<Score> ratings = rateRepository.findByPost(post);
+        double totalRating = 0.0;
+
+        for (Score rating : ratings) {
+            totalRating += rating.getRating();
+        }
+
+        double averageRating = totalRating / ratings.size();
+        post.setScore(averageRating);
+
+        postRepository.save(post);
     }
 }

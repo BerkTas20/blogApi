@@ -33,5 +33,6 @@ public class Post extends AbstractTimestampEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
+    private double score;
 
 }

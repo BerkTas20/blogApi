@@ -52,7 +52,7 @@ public class User extends AbstractTimestampEntity {
         userType = value;
     }
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
     public static User create(SaveAndUpdateUserRequest saveUserRequest) {

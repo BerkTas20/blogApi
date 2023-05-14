@@ -14,13 +14,25 @@ import java.util.List;
 
 public interface PostService {
     PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId);
+
     PostDto update(Long id, UpdatePostRequest updatePostRequest);
+
     void delete(Long id);
+
     PostResponse getAllPosts(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
+
     PostDto getOnePostById(Long postId);
+
     List<PostDto> getPostsByCategory(Long categoryId);
+
     List<PostDto> getPostsByUser(Long userId);
+
     List<PostDto> searchPosts(String keyword);
+
     List<Post> getLatestPostsByUser(Long userId);
+
+    void incrementViews(Long postId);
+
+    void ratePost(Long postId, Long userId, double rating);
 
 }

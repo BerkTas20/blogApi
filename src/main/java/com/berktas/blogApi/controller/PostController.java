@@ -75,4 +75,16 @@ public class PostController {
         return ResponseEntity.ok(postService.getLatestPostsByUser(userId));
     }
 
+    @PostMapping("/posts/{postId}/view")
+    public ResponseEntity<String> viewPost(@PathVariable Long postId) {
+        postService.incrementViews(postId);
+        return ResponseEntity.ok("Post viewed successfully");
+    }
+
+    @PostMapping("/{postId}/{userId}/rating")
+    public ResponseEntity<String> ratePost(@PathVariable Long postId, @PathVariable Long  userId, @RequestParam double rating) {
+        postService.ratePost(postId, userId, rating);
+        return ResponseEntity.ok("Post rating saved successfully.");
+    }
+
 }
