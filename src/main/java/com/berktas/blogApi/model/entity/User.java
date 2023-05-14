@@ -5,6 +5,7 @@ import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
 import com.berktas.blogApi.core.security.SpringContext;
 import com.berktas.blogApi.model.enums.Role;
 import com.berktas.blogApi.model.enums.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
@@ -51,7 +52,7 @@ public class User extends AbstractTimestampEntity {
         userType = value;
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<Post> posts;
 
     public static User create(SaveAndUpdateUserRequest saveUserRequest) {
