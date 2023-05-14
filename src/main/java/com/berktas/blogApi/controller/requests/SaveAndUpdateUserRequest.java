@@ -1,14 +1,14 @@
 package com.berktas.blogApi.controller.requests;
 
 import com.berktas.blogApi.model.enums.Role;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Builder
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class SaveAndUpdateUserRequest {
 
         private String firstName;

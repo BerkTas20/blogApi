@@ -5,10 +5,7 @@ import com.berktas.blogApi.core.entity.AbstractTimestampEntity;
 import com.berktas.blogApi.core.security.SpringContext;
 import com.berktas.blogApi.model.enums.Role;
 import com.berktas.blogApi.model.enums.UserType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 
