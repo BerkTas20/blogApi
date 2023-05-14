@@ -7,6 +7,7 @@ import com.berktas.blogApi.model.dto.PhotoDto;
 import com.berktas.blogApi.model.dto.UserDto;
 import com.berktas.blogApi.model.entity.Photo;
 import com.berktas.blogApi.model.entity.User;
+import com.berktas.blogApi.model.enums.Role;
 import com.berktas.blogApi.model.mapper.PhotoMapper;
 import com.berktas.blogApi.model.mapper.UserMapper;
 import com.berktas.blogApi.repository.PhotoRepository;
@@ -21,6 +22,7 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -108,10 +110,11 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
 
-        if (user.getProfilePhoto() == null) {
+        Optional<byte[]> profilePhotoOptional = Optional.ofNullable(user.getProfilePhoto());
+        if (profilePhotoOptional.isEmpty()){
             throw new EntityNotFoundException("User does not have a profile photo");
         }
 
-        return user.getProfilePhoto();
+        return profilePhotoOptional.get();
     }
 }

@@ -48,6 +48,8 @@ public class User extends AbstractTimestampEntity {
     @Lob
     private byte[] coverPhoto;
 
+    boolean isBlocked = false;
+
     protected void setUserType(UserType value) {
         userType = value;
     }

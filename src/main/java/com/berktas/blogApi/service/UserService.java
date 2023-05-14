@@ -29,4 +29,6 @@ public interface UserService {
     void deleteCoverPhoto(User user);
 
     byte[] getProfilePhoto(Long userId);
+
+
 }

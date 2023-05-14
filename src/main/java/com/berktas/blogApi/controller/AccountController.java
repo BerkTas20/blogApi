@@ -31,7 +31,6 @@ public class AccountController {
     @PostMapping("/login")
     @PermitAllCustom
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
-
         return ResponseEntity.ok(accountService.login(loginRequest));
     }
 
