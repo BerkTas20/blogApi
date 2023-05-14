@@ -62,17 +62,5 @@ public class UserController {
         }
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(profilePhoto);
     }
-
-//    @OnlyAdmin
-//    @PatchMapping("/{userId}/block")
-//    public void blockUser(@PathVariable Long userId) {
-//        userService.blockUser(userId);
-//    }
-//
-//    @OnlyAdmin
-//    @PostMapping("/{userId}/unblock")
-//    public void unblockUser(@PathVariable Long userId) {
-//        userService.unblockUser(userId);
-//    }
 }
 
