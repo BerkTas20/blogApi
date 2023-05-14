@@ -42,6 +42,7 @@ public class PostServiceImpl implements PostService {
     private final PhotoRepository photoRepository;
 
 
+
     @Override
     public PostDto save(SavePostRequest savePostRequest, Long userId, Long categoryId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
