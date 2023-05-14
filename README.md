@@ -23,5 +23,14 @@ Simple Blog Api -- Java 17 Spring boot 2.5.5
 - Run project in editor , automatic tables will be created in the database.
 - This is swagger url : http://localhost:8090/api/v1/swagger-ui/index.html
 
+What can do this backend application ? 
+- Admin and user registration and login can be done.
+- User can add profile photo and cover photo.
+- User can share post, another user may like the post.
+- View of the post can be seen.
+- Posts can be filtered by user and category.
+- User recent posts can be listed.
+- Users can post scores. Scores are averaged and post score determined.
+
 Db Diagram:
 ![Image of Yaktocat](https://i.hizliresim.com/qvrtxfj.png)
